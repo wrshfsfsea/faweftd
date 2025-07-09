@@ -250,7 +250,7 @@ if promptUser == 1 and prompt and type(prompt.create) == "function" then
 		'',
 	    [[CR7 Script is fully safe and trustworthy. Unlike some other survival scripts that may use IP loggers (like Aura or NexusZ), CR7 respects your privacy and security. Use with confidence!
 
-<font transparency='0.3'>.</font>]],
+<font transparency='0.3'>Enjoy.</font>]],
 		'Okay',
 		'',
 		function()
