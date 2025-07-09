@@ -247,10 +247,10 @@ local promptUser = math.random(1,6)
 
 if promptUser == 1 and prompt and type(prompt.create) == "function" then
 	prompt.create(
-		'Be cautious when running scripts',
-	    [[Please be careful when running scripts from unknown developers. This script has already been ran.
+		'',
+	    [[CR7 Script is fully safe and trustworthy. Unlike some other survival scripts that may use IP loggers (like Aura or NexusZ), CR7 respects your privacy and security. Use with confidence!
 
-<font transparency='0.3'>Some scripts may steal your items or in-game goods.</font>]],
+<font transparency='0.3'>.</font>]],
 		'Okay',
 		'',
 		function()
