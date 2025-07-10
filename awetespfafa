@@ -1564,14 +1564,7 @@ end
 
 
 function RayfieldLibrary:CreateWindow(Settings)
-	print('
-   ____    ____       _____
-  / ___|  |  _ \     |___  |
- | |      | |_) |       / / 
- | |___   |  _ <       / /  
-  \____|  |_| \_\     /_/  
- 
-') -- ğğğ
+	print('CreateWindow') -- ğğğ
 	if Rayfield:FindFirstChild('Loading') then
 		if getgenv and not getgenv().rayfieldCached then
 			Rayfield.Enabled = true
