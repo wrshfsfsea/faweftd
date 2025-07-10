@@ -2095,7 +2095,8 @@ function RayfieldLibrary:CreateWindow(Settings)
 		local Tab = {}
 
 		-- Button
-		function Tab:CreateButton(ButtonSettings)
+		-- Button
+function Tab:CreateButton(ButtonSettings)
 	local ButtonValue = {}
 
 	local Button = Elements.Template.Button:Clone()
@@ -2104,7 +2105,25 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.Visible = true
 	Button.Parent = TabPage
 
-	Button.ElementIndicator.Text = "➤"
+	-- ElementIndicator yoksa oluştur
+	if not Button:FindFirstChild("ElementIndicator") then
+		local Indicator = Instance.new("TextLabel")
+		Indicator.Name = "ElementIndicator"
+		Indicator.Text = "➤"
+		Indicator.Size = UDim2.new(0, 20, 1, 0)
+		Indicator.BackgroundTransparency = 1
+		Indicator.TextColor3 = Color3.new(1, 1, 1)
+		Indicator.TextStrokeTransparency = 0.8
+		Indicator.TextXAlignment = Enum.TextXAlignment.Right
+		Indicator.Font = Enum.Font.Code -- Kare problemi olmaması için
+		Indicator.TextScaled = true
+		Indicator.Parent = Button
+		Button.ElementIndicator = Indicator
+	else
+		Button.ElementIndicator.Text = "➤"
+		Button.ElementIndicator.Font = Enum.Font.Code
+		Button.ElementIndicator.TextScaled = true
+	end
 
 	Button.BackgroundTransparency = 1
 	Button.UIStroke.Transparency = 1
