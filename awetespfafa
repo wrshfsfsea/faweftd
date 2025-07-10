@@ -2104,7 +2104,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.Visible = true
 	Button.Parent = TabPage
 
-	Button.ElementIndicator.Text = ">"
+	Button.ElementIndicator.Text = "o"
 	Button.ElementIndicator.TextTransparency = 0
 
 	Button.BackgroundTransparency = 1
