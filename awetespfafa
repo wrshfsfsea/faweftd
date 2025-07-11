@@ -2113,7 +2113,15 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.ElementIndicator.Text = "→"
 	Button.ElementIndicator.TextSize = 36
 	Button.ElementIndicator.Font = Enum.Font.GothamBlack
-	Button.ElementIndicator.TextColor3 = Color3.fromRGB(0, 105, 160)
+
+	if SelectedTheme.Name == "Default" then
+		Button.ElementIndicator.TextColor3 = Color3.fromRGB(255, 255, 255)
+	elseif SelectedTheme.Name == "Serenity" then
+		Button.ElementIndicator.TextColor3 = Color3.fromRGB(0, 0, 0)
+	else
+		Button.ElementIndicator.TextColor3 = Color3.fromRGB(120, 120, 120)
+	end
+
 	Button.ElementIndicator.TextTransparency = 0
 
 	TweenService:Create(Button, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
