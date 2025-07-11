@@ -2102,17 +2102,25 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	local Button = Elements.Template.Button:Clone()
 	Button.Name = ButtonSettings.Name
-	Button.Title.Text = "→"
+	Button.Title.Text = ButtonSettings.Name
 	Button.Visible = true
 	Button.Parent = TabPage
 
 	Button.BackgroundTransparency = 1
 	Button.UIStroke.Transparency = 1
-	Button.Title.TextTransparency = 0
+	Button.Title.TextTransparency = 1
 
 	Button.ElementIndicator.Text = "→"
-	Button.ElementIndicator.TextColor3 = Color3.fromRGB(153, 204, 255)
-	Button.ElementIndicator.TextSize = 20
+
+	if SelectedTheme.Name == "Default" then
+		Button.ElementIndicator.TextColor3 = Color3.fromRGB(255, 255, 255) -- Beyaz
+	elseif SelectedTheme.Name == "Serenity" then
+		Button.ElementIndicator.TextColor3 = Color3.fromRGB(0, 0, 0) -- Siyah
+	else
+		Button.ElementIndicator.TextColor3 = Color3.fromRGB(200, 200, 200) -- Açık gri (yedek)
+	end
+
+	Button.ElementIndicator.TextTransparency = 0
 
 	TweenService:Create(Button, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 	TweenService:Create(Button.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
@@ -2120,9 +2128,8 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	Button.Interact.MouseButton1Click:Connect(function()
 		local Success, Response = pcall(ButtonSettings.Callback)
-		if rayfieldDestroyed then
-			return
-		end
+		if rayfieldDestroyed then return end
+
 		if not Success then
 			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 			TweenService:Create(Button.ElementIndicator, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
