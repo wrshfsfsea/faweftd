@@ -2106,9 +2106,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.Visible = true
 	Button.Parent = TabPage
 
-	Button.BackgroundTransparency = 1
+	Button.BackgroundTransparency = 0
 	Button.UIStroke.Transparency = 1
-	Button.Title.TextTransparency = 1
+	Button.Title.TextTransparency = 0
 
 	Button.ElementIndicator.Text = "→"
 	Button.ElementIndicator.TextColor3 = Color3.fromRGB(153, 204, 255) -- Açık mavi
