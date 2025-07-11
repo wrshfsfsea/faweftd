@@ -2124,6 +2124,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	Button.ElementIndicator.TextTransparency = 0
 
+	local bgColor = SelectedTheme.ElementBackground or Color3.fromRGB(30, 30, 30)
+	local bgHoverColor = SelectedTheme.ElementBackgroundHover or Color3.fromRGB(50, 50, 50)
+
 	TweenService:Create(Button, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 	TweenService:Create(Button.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
 	TweenService:Create(Button.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
@@ -2139,26 +2142,26 @@ function RayfieldLibrary:CreateWindow(Settings)
 			print("Rayfield | "..ButtonSettings.Name.." Callback Error " ..tostring(Response))
 			task.wait(0.5)
 			Button.Title.Text = ButtonSettings.Name
-			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
+			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = bgColor}):Play()
 			TweenService:Create(Button.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
 		else
 			if not ButtonSettings.Ext then
 				SaveConfiguration(ButtonSettings.Name..'\n')
 			end
-			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
+			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = bgHoverColor}):Play()
 			TweenService:Create(Button.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 			task.wait(0.2)
-			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
+			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = bgColor}):Play()
 			TweenService:Create(Button.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
 		end
 	end)
 
 	Button.MouseEnter:Connect(function()
-		TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
+		TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = bgHoverColor}):Play()
 	end)
 
 	Button.MouseLeave:Connect(function()
-		TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
+		TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = bgColor}):Play()
 	end)
 
 	function ButtonValue:Set(NewButton)
@@ -2168,6 +2171,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	return ButtonValue
 end
+
 
 
 
