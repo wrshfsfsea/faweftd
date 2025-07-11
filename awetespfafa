@@ -2113,8 +2113,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.ElementIndicator.Text = "→"
 	Button.ElementIndicator.TextSize = 36
 	Button.ElementIndicator.Font = Enum.Font.GothamBlack
-	Button.ElementIndicator.TextColor3 = Color3.fromRGB(0, 130, 195)
-
+	Button.ElementIndicator.TextColor3 = Color3.fromRGB(0, 105, 160)
 	Button.ElementIndicator.TextTransparency = 0
 
 	TweenService:Create(Button, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
@@ -2124,14 +2123,14 @@ function RayfieldLibrary:CreateWindow(Settings)
 	local defaultColor = SelectedTheme.ElementBackground or Color3.fromRGB(40, 40, 40)
 	local hoverColor = SelectedTheme.ElementBackgroundHover or Color3.fromRGB(30, 30, 30)
 	local darkerDefault = Color3.fromRGB(
-		math.max(defaultColor.R * 255 - 10, 0),
-		math.max(defaultColor.G * 255 - 10, 0),
-		math.max(defaultColor.B * 255 - 10, 0)
+		math.max(defaultColor.R * 255 - 20, 0),
+		math.max(defaultColor.G * 255 - 20, 0),
+		math.max(defaultColor.B * 255 - 20, 0)
 	)
 	local darkerHover = Color3.fromRGB(
-		math.max(hoverColor.R * 255 - 15, 0),
-		math.max(hoverColor.G * 255 - 15, 0),
-		math.max(hoverColor.B * 255 - 15, 0)
+		math.max(hoverColor.R * 255 - 30, 0),
+		math.max(hoverColor.G * 255 - 30, 0),
+		math.max(hoverColor.B * 255 - 30, 0)
 	)
 
 	Button.Interact.MouseButton1Click:Connect(function()
@@ -2177,9 +2176,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	return ButtonValue
 end
-
-
-
 
 
 
