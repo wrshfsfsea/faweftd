@@ -2114,9 +2114,11 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.ElementIndicator.TextSize = 18
 	Button.ElementIndicator.Font = Enum.Font.GothamBold
 
-	if SelectedTheme.Name == "Default" then
+	local themeName = (SelectedTheme and SelectedTheme.Name) or "Default"
+
+	if themeName == "Default" then
 		Button.ElementIndicator.TextColor3 = Color3.fromRGB(255, 255, 255)
-	elseif SelectedTheme.Name == "Serenity" then
+	elseif themeName == "Serenity" then
 		Button.ElementIndicator.TextColor3 = Color3.fromRGB(0, 0, 0)
 	else
 		Button.ElementIndicator.TextColor3 = Color3.fromRGB(200, 200, 200)
@@ -2124,8 +2126,8 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	Button.ElementIndicator.TextTransparency = 0
 
-	local bgColor = SelectedTheme.ElementBackground or Color3.fromRGB(30, 30, 30)
-	local bgHoverColor = SelectedTheme.ElementBackgroundHover or Color3.fromRGB(50, 50, 50)
+	local bgColor = (SelectedTheme and SelectedTheme.ElementBackground) or Color3.fromRGB(30, 30, 30)
+	local bgHoverColor = (SelectedTheme and SelectedTheme.ElementBackgroundHover) or Color3.fromRGB(50, 50, 50)
 
 	TweenService:Create(Button, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 	TweenService:Create(Button.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
@@ -2171,6 +2173,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	return ButtonValue
 end
+
 
 
 
