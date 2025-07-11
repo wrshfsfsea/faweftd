@@ -2106,7 +2106,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.Visible = true
 	Button.Parent = TabPage
 
-	Button.BackgroundTransparency = 1
+	Button.BackgroundTransparency = 0
 	Button.UIStroke.Transparency = 1
 	Button.Title.TextTransparency = 1
 
