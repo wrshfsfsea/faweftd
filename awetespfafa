@@ -2102,13 +2102,13 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	local Button = Elements.Template.Button:Clone()
 	Button.Name = ButtonSettings.Name
-	Button.Title.Text = ""
+	Button.Title.Text = "→"
 	Button.Visible = true
 	Button.Parent = TabPage
 
 	Button.BackgroundTransparency = 1
 	Button.UIStroke.Transparency = 1
-	Button.Title.TextTransparency = 1
+	Button.Title.TextTransparency = 0
 
 	Button.ElementIndicator.Text = "→"
 	Button.ElementIndicator.TextColor3 = Color3.fromRGB(153, 204, 255)
