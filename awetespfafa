@@ -2110,8 +2110,19 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.UIStroke.Transparency = 1
 	Button.Title.TextTransparency = 1
 
-	local bgColor = (SelectedTheme and SelectedTheme.ElementBackground) or Color3.fromRGB(30, 30, 30)
-	local bgHover = (SelectedTheme and SelectedTheme.ElementBackgroundHover) or Color3.fromRGB(50, 50, 50)
+	Button.ElementIndicator.Text = "→"
+	Button.ElementIndicator.TextSize = 18
+	Button.ElementIndicator.Font = Enum.Font.GothamBold
+
+	if SelectedTheme.Name == "Default" then
+		Button.ElementIndicator.TextColor3 = Color3.fromRGB(255, 255, 255)
+	elseif SelectedTheme.Name == "Serenity" then
+		Button.ElementIndicator.TextColor3 = Color3.fromRGB(0, 0, 0)
+	else
+		Button.ElementIndicator.TextColor3 = Color3.fromRGB(200, 200, 200)
+	end
+
+	Button.ElementIndicator.TextTransparency = 0
 
 	TweenService:Create(Button, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 	TweenService:Create(Button.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
@@ -2123,36 +2134,31 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 		if not Success then
 			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
-			TweenService:Create(Button.ElementIndicator, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
 			TweenService:Create(Button.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 			Button.Title.Text = "Callback Error"
+			print("Rayfield | "..ButtonSettings.Name.." Callback Error " ..tostring(Response))
 			task.wait(0.5)
 			Button.Title.Text = ButtonSettings.Name
-			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = bgColor}):Play()
-			TweenService:Create(Button.ElementIndicator, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {TextTransparency = 0.9}):Play()
+			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 			TweenService:Create(Button.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
 		else
 			if not ButtonSettings.Ext then
 				SaveConfiguration(ButtonSettings.Name..'\n')
 			end
-			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = bgHover}):Play()
-			TweenService:Create(Button.ElementIndicator, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
 			TweenService:Create(Button.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 			task.wait(0.2)
-			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = bgColor}):Play()
-			TweenService:Create(Button.ElementIndicator, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {TextTransparency = 0.9}):Play()
+			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 			TweenService:Create(Button.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
 		end
 	end)
 
 	Button.MouseEnter:Connect(function()
-		TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = bgHover}):Play()
-		TweenService:Create(Button.ElementIndicator, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {TextTransparency = 0.7}):Play()
+		TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
 	end)
 
 	Button.MouseLeave:Connect(function()
-		TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = bgColor}):Play()
-		TweenService:Create(Button.ElementIndicator, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {TextTransparency = 0.9}):Play()
+		TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 	end)
 
 	function ButtonValue:Set(NewButton)
@@ -2162,9 +2168,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	return ButtonValue
 end
-
-
-
 
 		-- ColorPicker
 		function Tab:CreateColorPicker(ColorPickerSettings) -- by Throit
