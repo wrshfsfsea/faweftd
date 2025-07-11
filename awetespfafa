@@ -2108,11 +2108,21 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	Button.BackgroundTransparency = 1
 	Button.UIStroke.Transparency = 1
-	Button.Title.TextTransparency = 0
+	Button.Title.TextTransparency = 1
 
 	Button.ElementIndicator.Text = "→"
+	Button.ElementIndicator.TextSize = 18
+	Button.ElementIndicator.Font = Enum.Font.GothamBold
+
+	if SelectedTheme.Name == "Default" then
+		Button.ElementIndicator.TextColor3 = Color3.fromRGB(255, 255, 255)
+	elseif SelectedTheme.Name == "Serenity" then
+		Button.ElementIndicator.TextColor3 = Color3.fromRGB(0, 0, 0)
+	else
+		Button.ElementIndicator.TextColor3 = Color3.fromRGB(200, 200, 200)
+	end
+
 	Button.ElementIndicator.TextTransparency = 0
-	Button.ElementIndicator.TextColor3 = Color3.fromRGB(200, 200, 200)
 
 	TweenService:Create(Button, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 	TweenService:Create(Button.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
@@ -2121,6 +2131,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.Interact.MouseButton1Click:Connect(function()
 		local Success, Response = pcall(ButtonSettings.Callback)
 		if rayfieldDestroyed then return end
+
 		if not Success then
 			TweenService:Create(Button, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 			TweenService:Create(Button.ElementIndicator, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
@@ -2164,6 +2175,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	return ButtonValue
 end
+
 
 
 		-- ColorPicker
