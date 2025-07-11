@@ -2108,7 +2108,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	Button.BackgroundTransparency = 1
 	Button.UIStroke.Transparency = 1
-	Button.Title.TextTransparency = 1
+	Button.Title.TextTransparency = 0
 
 	Button.ElementIndicator.Text = "→"
 	Button.ElementIndicator.TextTransparency = 0
