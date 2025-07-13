@@ -792,14 +792,24 @@ local function ChangeTheme(Theme)
 	end
 
 	for _, TabPage in ipairs(Elements:GetChildren()) do
-		for _, Element in ipairs(TabPage:GetChildren()) do
-			if Element.ClassName == "Frame" and Element.Name ~= "Placeholder" and Element.Name ~= "SectionSpacing" and Element.Name ~= "Divider" and Element.Name ~= "SectionTitle" and Element.Name ~= "SearchTitle-fsefsefesfsefesfesfThanks" then
-				Element.BackgroundColor3 = SelectedTheme.ElementBackground
-				Element.UIStroke.Color = SelectedTheme.ElementStroke
+	for _, Element in ipairs(TabPage:GetChildren()) do
+		if Element.ClassName == "Frame"
+			and Element.Name ~= "Placeholder"
+			and Element.Name ~= "SectionSpacing"
+			and Element.Name ~= "Divider"
+			and Element.Name ~= "SectionTitle"
+			and Element.Name ~= "SearchTitle-fsefsefesfsefesfesfThanks" then
+
+			Element.BackgroundColor3 = SelectedTheme.ElementBackground
+
+			local stroke = Element:FindFirstChildWhichIsA("UIStroke")
+			if stroke then
+				stroke.Color = SelectedTheme.ElementStroke
 			end
 		end
 	end
 end
+
 
 local function getIcon(name : string): {id: number, imageRectSize: Vector2, imageRectOffset: Vector2}
 	if not Icons then
