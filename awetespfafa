@@ -2125,7 +2125,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 		)
 		ImageLabel.AnchorPoint = Button.ElementIndicator.AnchorPoint
 		ImageLabel.BackgroundTransparency = 1
-		ImageLabel.Image = "rbxassetid://79063474744376"
+		ImageLabel.Image = "rbxassetid://12487946920"
 		ImageLabel.ZIndex = Button.ElementIndicator.ZIndex
 	end
 
