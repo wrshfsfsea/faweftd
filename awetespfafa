@@ -2111,8 +2111,8 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.Title.TextTransparency = 1
 
 	-- Burada → yerine emoji koyduk, emoji uyumlu formatta
-	Button.ElementIndicator.Text = "🔘"  -- İstediğin emojiyi buraya koyabilirsin
-	Button.ElementIndicator.TextSize = 36
+	Button.ElementIndicator.Text = "🖱"
+	Button.ElementIndicator.TextSize = 20
 	Button.ElementIndicator.Font = Enum.Font.GothamBlack
 	Button.ElementIndicator.TextColor3 = Color3.fromRGB(0, 105, 160)
 	Button.ElementIndicator.TextTransparency = 0
