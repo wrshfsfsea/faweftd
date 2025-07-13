@@ -2110,8 +2110,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.UIStroke.Transparency = 1
 	Button.Title.TextTransparency = 1
 
-	Button.ElementIndicator.Text = "o"
-	Button.ElementIndicator.TextSize = 100
+	-- Burada → yerine emoji koyduk, emoji uyumlu formatta
+	Button.ElementIndicator.Text = "🔘"  -- İstediğin emojiyi buraya koyabilirsin
+	Button.ElementIndicator.TextSize = 36
 	Button.ElementIndicator.Font = Enum.Font.GothamBlack
 	Button.ElementIndicator.TextColor3 = Color3.fromRGB(0, 105, 160)
 	Button.ElementIndicator.TextTransparency = 0
@@ -2176,6 +2177,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	return ButtonValue
 end
+
 
 
 
