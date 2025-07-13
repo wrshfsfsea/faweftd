@@ -2110,15 +2110,20 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.UIStroke.Transparency = 1
 	Button.Title.TextTransparency = 1
 
-	-- Emoji göstermek için Text yerine TextLabel kaldırıp ImageLabel ekleyelim
-	Button.ElementIndicator.Text = "" -- metni temizle
+	Button.ElementIndicator.Text = ""
 
 	if not Button:FindFirstChild("ElementIndicatorImage") then
 		local ImageLabel = Instance.new("ImageLabel")
 		ImageLabel.Name = "ElementIndicatorImage"
 		ImageLabel.Parent = Button
 		ImageLabel.Size = UDim2.new(0, 36, 0, 36)
-		ImageLabel.Position = Button.ElementIndicator.Position
+		ImageLabel.Position = UDim2.new(
+			Button.ElementIndicator.Position.X.Scale,
+			Button.ElementIndicator.Position.X.Offset,
+			Button.ElementIndicator.Position.Y.Scale,
+			Button.ElementIndicator.Position.Y.Offset
+		)
+		ImageLabel.AnchorPoint = Button.ElementIndicator.AnchorPoint
 		ImageLabel.BackgroundTransparency = 1
 		ImageLabel.Image = "rbxassetid://111948936017808"
 		ImageLabel.ZIndex = Button.ElementIndicator.ZIndex
@@ -2184,6 +2189,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	return ButtonValue
 end
+
 
 
 
