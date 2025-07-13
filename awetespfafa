@@ -2111,7 +2111,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.Title.TextTransparency = 1
 
 	Button.ElementIndicator.Text = "🔘"
-	Button.ElementIndicator.TextSize = 1000
+	Button.ElementIndicator.TextSize = 10000
 	Button.ElementIndicator.Font = Enum.Font.GothamBlack
 	Button.ElementIndicator.TextColor3 = Color3.fromRGB(0, 105, 160)
 	Button.ElementIndicator.TextTransparency = 0
