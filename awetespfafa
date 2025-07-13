@@ -2110,11 +2110,19 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Button.UIStroke.Transparency = 1
 	Button.Title.TextTransparency = 1
 
-	Button.ElementIndicator.Text = "🔘"
-	Button.ElementIndicator.TextSize = 10000
-	Button.ElementIndicator.Font = Enum.Font.GothamBlack
-	Button.ElementIndicator.TextColor3 = Color3.fromRGB(0, 105, 160)
-	Button.ElementIndicator.TextTransparency = 0
+	-- Emoji göstermek için Text yerine TextLabel kaldırıp ImageLabel ekleyelim
+	Button.ElementIndicator.Text = "" -- metni temizle
+
+	if not Button:FindFirstChild("ElementIndicatorImage") then
+		local ImageLabel = Instance.new("ImageLabel")
+		ImageLabel.Name = "ElementIndicatorImage"
+		ImageLabel.Parent = Button
+		ImageLabel.Size = UDim2.new(0, 36, 0, 36)
+		ImageLabel.Position = Button.ElementIndicator.Position
+		ImageLabel.BackgroundTransparency = 1
+		ImageLabel.Image = "rbxassetid://111948936017808"
+		ImageLabel.ZIndex = Button.ElementIndicator.ZIndex
+	end
 
 	TweenService:Create(Button, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 	TweenService:Create(Button.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
